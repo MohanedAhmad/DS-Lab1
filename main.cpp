@@ -68,29 +68,10 @@ public:
         {
             cout << "\nThere is NO node with value " << _data << " to add data after !!!\n";
             delete newNode;
-            return;
-        }
-        if(head == foundNode)
-        {
-            if(head == tail)
-            {
-                newNode->prev = head;
-                head->next = newNode;
-                tail = newNode;
-            }
-            else
-            {
-                newNode->next = head->next;
-                newNode->prev = head;
-                newNode->next->prev = newNode;
-                head->next = newNode;
-            }
         }
         else if(tail == foundNode)
         {
-            tail->next = newNode;
-            newNode->prev = tail;
-            tail = newNode;
+            this->addNode(_data);
         }
         else
         {
@@ -110,29 +91,12 @@ public:
         {
             cout << "\nThere is NO node with value " << _data << " to add data before !!!\n";
             delete newNode;
-            return;
         }
-        if(head == foundNode)
+        else if(head == foundNode)
         {
                 newNode->next = head;
                 head->prev = newNode;
                 head = newNode;
-        }
-        else if(tail == foundNode)
-        {
-            if(tail == head)
-            {
-                newNode->next = tail;
-                head->prev = newNode;
-                head = newNode;
-            }
-            else
-            {
-                newNode->prev = tail->prev;
-                newNode->next = tail;
-                newNode->prev->next = newNode;
-                tail->prev = newNode;
-            }
         }
         else
         {
@@ -247,13 +211,47 @@ int main()
 
     cout << "\n**************************************************************************\n";
 
-    cout << "\The number of current nodes is : " << l.GetCount() << endl;
+    cout << "\nThe number of current nodes is : " << l.GetCount() << endl;
 
     cout << "\n**************************************************************************\n";
 
-    cout << "\The value of node with index 0 is : " << l.GetDataByIndex(0) << endl;
-    cout << "\The value of node with index 2 is : " << l.GetDataByIndex(2) << endl;
-    cout << "\The value of node with index 7 is : " << l.GetDataByIndex(7) << endl;
+    cout << "\nThe value of node with index 0 is : " << l.GetDataByIndex(0) << endl;
+    cout << "\nThe value of node with index 2 is : " << l.GetDataByIndex(2) << endl;
+    cout << "\nThe value of node with index 7 is : " << l.GetDataByIndex(7) << endl;
+
+    cout << "\n**************************************************************************\n";
+
+    cout << "\nAdding 60 before 10 : " << endl;
+    l.addNodeBefore(60,10);
+    l.print();
+
+    cout << "\nAdding 70 before 50 : " << endl;
+    l.addNodeBefore(70,50);
+    l.print();
+
+    cout << "\nAdding 80 before 30 : " << endl;
+    l.addNodeBefore(80,30);
+    l.print();
+
+    cout << "\nAdding 1000 before 1000 : " << endl;
+    l.addNodeBefore(1000,1000);
+
+    cout << "\n**************************************************************************\n";
+
+    cout << "\nAdding 90 after 60 : " << endl;
+    l.addNodeAfter(90,60);
+    l.print();
+
+    cout << "\nAdding 100 after 50 : " << endl;
+    l.addNodeAfter(100,50);
+    l.print();
+
+    cout << "\nAdding 110 after 20 : " << endl;
+    l.addNodeAfter(110,20);
+    l.print();
+
+    cout << "\nAdding 1000 after 1000 : " << endl;
+    l.addNodeAfter(1000,1000);
 
     cout << "\n**************************************************************************\n";
 
